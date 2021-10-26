@@ -16,3 +16,9 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+nav {
+  background-color: #0FB9B1;
+  margin: 0;
+  padding: 0;
+}
