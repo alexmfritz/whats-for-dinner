@@ -63,12 +63,25 @@ main {
   flex-direction: column;
   text-align: center;
   justify-content: center;
+  margin-left: 200px;
 }
 
 #flex-child-right {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-right: 200px;
+}
+
+.clear-button {
+  height: 40px;
+  width: 80px;
+  color: white;
+  background-color: #95a5a6;
+  border-radius: 5px;
+  border: none;
+  margin-left: 375px;
+  margin-top: 75px;
 }
 
 #radio-title {
@@ -95,8 +108,8 @@ label {
   border-radius: 5px;
   background-color: #0fb9b1;
   border: none;
-
 }
+
 .recipe-view {
   height: 50%;
 }
@@ -129,4 +142,8 @@ footer {
   margin-left: -20px;
   margin-top: 14px;
   margin-bottom: 14px;
+}
+
+.hidden {
+  display: none;
 }
