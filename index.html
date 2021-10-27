@@ -9,31 +9,27 @@
       <button id="add-recipe-button">ADD A RECIPE</button>
     </header>
     <main>
-      <section class="flex-parent">
-        <section class="flex-child">
-          <field id="radio-field">
-            <p id="radio-title">What are you looking for?</p>
-            <input type="radio" name="type" class="food" value="Side" />Side
-            <input type="radio" name="type" class="food" value="Main Dish" />Main Dish
-            <input type="radio" name="type" class="food" value="Dessert" />Dessert
-            <input type="radio" name="type" class="food" value="Entire Meal" />Entire Meal
+        <section class="flex-child" id="flex-child-left">
+            <p id="radio-title">What are you looking for?<span>&#42;</span></p>
+            <label><input type="radio" name="type" class="food" value="Side" />Side</label>
+            <label><input type="radio" name="type" class="food" value="Main Dish" />Main Dish</label>
+            <label><input type="radio" name="type" class="food" value="Dessert" />Dessert</label>
+            <label><input type="radio" name="type" class="food" value="Entire Meal" />Entire Meal</label>
             <button class="lets-cook-button">LET'S COOK!</button>
-          </field>
         </section>
-        <section class="flex-child">
+        <section class="flex-child" id="flex-child-right">
           <img class="recipe-view" src="./assets/cookpot.svg" alt="cooking pot"/>
         </section>
-      </section>
-      <!-- <section>
-        <footer class="new-recipe hidden">
-          <label class="recipe-text" for="recipe-type">Recipe Type:</label>
-          <input class="new-recipe" type="text" id="recipe-type" />
-          <label class="new-text" type="text">Recipe Name:</label>
-          <input class="new-recipe" id="recipe-name" />
-          <button class-"add-new-button" id="add-new-button">Add new</button>
-        </footer>
-      </section> -->
     </main>
+    <section>
+      <footer>
+        <label class="new-recipe-text" for="recipe-type">Recipe Type:</label>
+        <input class="new-recipe-input" type="text" id="recipe-type" />
+        <label class="new-recipe-text" type="text">Recipe Name:</label>
+        <input class="new-recipe-input" id="recipe-name" />
+        <button class="add-new-button" id="add-new-button">Add new</button>
+      </footer>
+    </section>
   </body>
   <script type="text/javascript" src="./src/main.js"></script>
   <script type="text/javascript" src="./src/data.js"></script>
