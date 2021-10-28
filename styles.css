@@ -81,7 +81,8 @@ main {
   border-radius: 5px;
   border: none;
   margin-left: 375px;
-  margin-top: 75px;
+  margin-top: 250px;
+  position: sticky;
 }
 
 #radio-title {
