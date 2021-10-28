@@ -1,5 +1,5 @@
 // buttons
-var showFooterButton = document.querySelector('.add-recipe-button');
+var showFooterButton = document.querySelector('#add-recipe-button');
 var letsCookButton = document.querySelector('lets-cook-button');
 var clearButton = document.querySelector('clear-button');
 var newRecipeButton = document.querySelector('add-new-button');
@@ -12,10 +12,19 @@ var radioMeal = document.querySelector('#entire-meal');
 var rightBox = document.querySelector('#flex-child-right');
 var cookPot = document.querySelector('.cook-pot');
 // footer
-var newRecipeView = document.querySelector('add-recipe');
+var newRecipeView = document.querySelector('.add-recipe');
 var newRecipeType = document.querySelector('#recipe-type');
 var newRecipeName = document.querySelector('#recipe-name');
 
 // event listeners
+showFooterButton.addEventListener('click', viewAddRecipe);
 
 // event handlers
+
+function viewAddRecipe() {
+  if (newRecipeView.classList.contains('hidden')) {
+    newRecipeView.classList.remove('hidden');
+  } else {
+    newRecipeView.classList.add('hidden');
+  }
+}
