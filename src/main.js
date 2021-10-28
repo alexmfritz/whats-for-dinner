@@ -22,6 +22,7 @@ var newRecipeName = document.querySelector('#recipe-name');
 showFooterButton.addEventListener('click', viewAddRecipe);
 letsCookButton.addEventListener('click', letsCook);
 clearButton.addEventListener('click', clearMeal);
+newRecipeButton.addEventListener('click', addRecipe);
 
 // event handlers
 function viewAddRecipe() {
@@ -58,6 +59,20 @@ function displayRandomMeal() {
     displayFood.innerText = `${mains[getRandomIndex(mains)]} for the main course, ${sides[getRandomIndex(sides)]} for a side, and ${desserts[getRandomIndex(desserts)]} for the dessert!`;
   } else {
     alert('Please select an option!');
+  }
+}
+
+function addRecipe() {
+  if ((newRecipeType.value == 'side') && (!sides.includes(newRecipeName.value))) {
+    sides.push(newRecipeName.value);
+  } else if ((newRecipeType.value == 'main dish') && (!mains.includes(newRecipeName.value))) {
+    mains.push(newRecipeName.value);
+  } else if ((newRecipeType.value == 'dessert') && (!desserts.includes(newRecipeName.value))) {
+    desserts.push(newRecipeName.value);
+  } else if ((sides.includes(newRecipeName.value)) || (mains.includes(newRecipeName.value)) || (desserts.includes(newRecipeName.value))) {
+    alert('You cannot enter the same recipe twice!');
+  } else {
+    alert('Please enter all the necessary information!');
   }
 }
 
