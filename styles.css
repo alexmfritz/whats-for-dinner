@@ -81,7 +81,7 @@ main {
   border-radius: 5px;
   border: none;
   margin-left: 375px;
-  margin-top: 250px;
+  margin-top: 50px;
   position: sticky;
 }
 
@@ -113,6 +113,26 @@ label {
 
 .cook-pot {
   height: 50%;
+}
+
+.display-text,
+.display-food {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.display-text {
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.display-food {
+  font-size: 22px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 footer {
