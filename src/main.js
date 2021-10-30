@@ -8,6 +8,7 @@ var radioSide = document.querySelector('#side');
 var radioMain = document.querySelector('#main');
 var radioDessert = document.querySelector('#dessert');
 var radioMeal = document.querySelector('#entire-meal');
+var radioAll = document.getElementsByName('type');
 // right box
 var rightBox = document.querySelector('#flex-child-right');
 var cookPot = document.querySelector('.cook-pot');
@@ -22,46 +23,63 @@ var newRecipeName = document.querySelector('#recipe-name');
 // event listeners
 showFooterButton.addEventListener('click', viewAddRecipe);
 letsCookButton.addEventListener('click', letsCook);
-clearButton.addEventListener('click', clearMeal);
 newRecipeButton.addEventListener('click', addRecipe);
+clearButton.addEventListener('click', function(event) {
+  clearRadio(radioAll);
+  clearMeal();
+});
 
 // event handlers
 function viewAddRecipe() {
   if (newRecipeView.classList.contains('hidden')) {
-    newRecipeView.classList.remove('hidden');
+    show(newRecipeView);
   } else {
-    newRecipeView.classList.add('hidden');
+    hide(newRecipeView);
+  }
+}
+
+function show(element) {
+  element.classList.remove('hidden');
+}
+
+function hide(element) {
+  element.classList.add('hidden');
+}
+
+function clearRadio(radioAll) {
+  for(var i = 0; i < radioAll.length; i++) {
+    radioAll[i].checked = false;
   }
 }
 
 function letsCook() {
-  cookPot.classList.add('hidden');
-  clearButton.classList.remove('hidden');
-  displayText.classList.remove('hidden');
-  displayFoodSingle.classList.remove('hidden');
-  displayFoodEntire.classList.remove('hidden');
   displayRandomMeal();
+  hide(cookPot);
+  show(clearButton);
+  show(displayText);
+  show(displayFoodSingle);
+  show(displayFoodEntire);
 }
 
 function clearMeal() {
-  cookPot.classList.remove('hidden');
-  clearButton.classList.add('hidden');
-  displayText.classList.add('hidden');
-  displayFoodSingle.classList.add('hidden');
-  displayFoodEntire.classList.add('hidden');
+  show(cookPot);
+  hide(clearButton);
+  hide(displayText);
+  hide(displayFoodSingle);
+  hide(displayFoodEntire);
 }
 
 function displayRandomMeal() {
-  if (radioSide.checked === true) {
+  if (radioSide.checked) {
     displayFoodSingle.innerText = `${sides[getRandomIndex(sides)]}!`;
     displayFoodEntire.innerText = ``;
-  } else if (radioMain.checked === true) {
+  } else if (radioMain.checked) {
     displayFoodSingle.innerText = `${mains[getRandomIndex(mains)]}!`;
     displayFoodEntire.innerText = ``;
-  } else if (radioDessert.checked === true) {
+  } else if (radioDessert.checked) {
     displayFoodSingle.innerText = `${desserts[getRandomIndex(desserts)]}!`;
     displayFoodEntire.innerText = ``;
-  } else if (radioMeal.checked === true) {
+  } else if (radioMeal.checked) {
     displayFoodSingle.innerText = ``;
     displayFoodEntire.innerText = `${mains[getRandomIndex(mains)]} for the main course, ${sides[getRandomIndex(sides)]} for a side, and ${desserts[getRandomIndex(desserts)]} for the dessert!`;
   } else {
