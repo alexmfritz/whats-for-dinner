@@ -45,3 +45,5 @@ var desserts = [
   `Tart Tatin`,
   `Croissants`,
   `Eclairs`];
+
+  var favorites = [];

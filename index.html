@@ -7,10 +7,11 @@
   <body>
     <header id="header">
       <h1 id="whats-for-dinner">What's for Dinner?</h1>
-      <button id="add-recipe-button">ADD A RECIPE</button>
+      <button class="header-buttons" id="add-recipe-button">ADD A RECIPE</button>
+      <button class="header-buttons" id="view-fav-recipe-button">VIEW FAVS</button>
     </header>
     <main>
-        <section class="flex-child" id="flex-child-left">
+        <section class="flex-child-main" id="flex-child-left">
             <h1 id="radio-title">What are you looking for?<span>&#42;</span></h1>
             <label><input type="radio" name="type" id="side" value="Side">Side</label>
             <label><input type="radio" name="type" id="main" value="Main Dish">Main Dish</label>
@@ -18,14 +19,18 @@
             <label><input type="radio" name="type" id="entire-meal" value="Entire Meal">Entire Meal</label>
             <button class="lets-cook-button">LET'S COOK!</button>
         </section>
-        <section class="flex-child" id="flex-child-right">
+        <section class="flex-child-main" id="flex-child-right">
           <img class="cook-pot" src="./assets/cookpot.svg" alt="cooking pot"/>
           <p class="display-text hidden">You should make:</p>
-          <p class="display-food-single hidden"></p>
-          <p class="display-food-entire hidden"></p>
+          <p class="display-food hidden"></p>
+          <button class="fav-recipe-button hidden">FAV</button>
           <button class="clear-button hidden">CLEAR</button>
         </section>
     </main>
+    <section class="flex-child-center hidden" id="flex-child-center">
+      <h1 id="fav-recipe-title">Your Favorite Recipes:</h1>
+      <p class="fav-recipe-text"></p>
+    </section>
     <section>
       <footer class="add-recipe hidden">
         <label class="new-recipe-text" for="recipe-type" id="recipe-name-left">Recipe Type:</label>

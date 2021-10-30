@@ -31,9 +31,20 @@ header {
 }
 
 #add-recipe-button {
-  margin-right: 15px;
   margin-top: 12px;
   margin-bottom: 12px;
+  margin-left: 66%;
+  border-radius: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-size: 14px;
+  border: none;
+}
+
+#view-fav-recipe-button {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-right: 25px;
   border-radius: 5px;
   padding-left: 12px;
   padding-right: 12px;
@@ -47,11 +58,28 @@ main {
   align-items: center;
 }
 
-.flex-child {
+.flex-child-main {
   display: flex;
   height: auto;
   width: 100%;
   position: relative;
+}
+
+.flex-child-center {
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  width: 50%;
+  justify-content: center;
+  margin-top: 1%;
+  margin-left: 35%;
+  background-color: rgba(225, 225, 225, .9);
+}
+
+.fav-recipe-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 #flex-child-left {
@@ -100,6 +128,21 @@ input {
   font-size: 15px;
 }
 
+.fav-recipe-button {
+  height: 40px;
+  width: 80px;
+  color: white;
+  background-color: #95a5a6;
+  border-radius: 5px;
+  border: none;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin-left: 20px;
+  margin-bottom: 25px;
+  font-size: 15px;
+}
+
 span {
   color: red;
 }
@@ -132,27 +175,19 @@ span {
 
 .display-text {
   font-style: italic;
-  margin-bottom: -1%;
+  margin-bottom: 10px;
   margin-top: -10%;
   position: fixed
 }
 
-.display-food-single {
-  font-size: 34px;
+.display-food {
+  font-size: 28px;
   font-weight: bold;
-  margin-bottom: 15%;
+  margin-top: 10px;
+  margin-bottom: 6%;
   text-align: center;
   position: absolute;
-  max-width: 450px;
-}
-
-.display-food-entire {
-  font-size: 26px;
-  font-weight: bold;
-  margin-bottom: 5%;
-  text-align: center;
-  position: absolute;
-  max-width: 450px;
+  max-width: 475px;
 }
 
 footer {
