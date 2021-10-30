@@ -53,12 +53,16 @@ function clearRadio(radioAll) {
 }
 
 function letsCook() {
-  displayRandomMeal();
-  hide(cookPot);
-  show(clearButton);
-  show(displayText);
-  show(displayFoodSingle);
-  show(displayFoodEntire);
+  if (radioSide.checked || radioMain.checked || radioDessert.checked || radioMeal.checked) {
+    displayRandomMeal();
+    hide(cookPot);
+    show(clearButton);
+    show(displayText);
+    show(displayFoodSingle);
+    show(displayFoodEntire);
+  } else {
+    letsCookButton.disabled = true;
+  }
 }
 
 function clearMeal() {
@@ -71,20 +75,24 @@ function clearMeal() {
 
 function displayRandomMeal() {
   if (radioSide.checked) {
-    displayFoodSingle.innerText = `${sides[getRandomIndex(sides)]}!`;
-    displayFoodEntire.innerText = ``;
+    displaySingleMeal(sides[getRandomIndex(sides)])
   } else if (radioMain.checked) {
-    displayFoodSingle.innerText = `${mains[getRandomIndex(mains)]}!`;
-    displayFoodEntire.innerText = ``;
+    displaySingleMeal(mains[getRandomIndex(mains)]);
   } else if (radioDessert.checked) {
-    displayFoodSingle.innerText = `${desserts[getRandomIndex(desserts)]}!`;
-    displayFoodEntire.innerText = ``;
+    displaySingleMeal(desserts[getRandomIndex(desserts)]);
   } else if (radioMeal.checked) {
-    displayFoodSingle.innerText = ``;
-    displayFoodEntire.innerText = `${mains[getRandomIndex(mains)]} for the main course, ${sides[getRandomIndex(sides)]} for a side, and ${desserts[getRandomIndex(desserts)]} for the dessert!`;
-  } else {
-    alert('Please select an option!');
+    displayEntireMeal(mains[getRandomIndex(mains)], sides[getRandomIndex(sides)], desserts[getRandomIndex(desserts)])
   }
+}
+
+function displaySingleMeal(singleMeal) {
+    displayFoodSingle.innerText = `${singleMeal}!`;
+    displayFoodEntire.innerText = ``;
+}
+
+function displayEntireMeal(mains, sides, desserts) {
+  displayFoodSingle.innerText = ``;
+  displayFoodEntire.innerText = `${mains} for the main course, ${sides} for a side, and ${desserts} for the dessert!`;
 }
 
 function addRecipe() {
