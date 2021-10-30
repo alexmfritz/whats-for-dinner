@@ -3,7 +3,10 @@ var showFooterButton = document.querySelector('#add-recipe-button');
 var letsCookButton = document.querySelector('.lets-cook-button');
 var clearButton = document.querySelector('.clear-button');
 var newRecipeButton = document.querySelector('.add-new-button');
+var favRecipeButton = document.querySelector('.fav-recipe-button');
+var viewFavRecipeButton = document.querySelector('#view-fav-recipe-button');
 // radio input
+var leftBox = document.querySelector('#flex-child-left');
 var radioSide = document.querySelector('#side');
 var radioMain = document.querySelector('#main');
 var radioDessert = document.querySelector('#dessert');
@@ -19,6 +22,8 @@ var displayFoodEntire = document.querySelector('.display-food-entire');
 var newRecipeView = document.querySelector('.add-recipe');
 var newRecipeType = document.querySelector('#recipe-type');
 var newRecipeName = document.querySelector('#recipe-name');
+// favorite recipe
+var centerBox = document.querySelector('.flex-child-center');
 
 // event listeners
 showFooterButton.addEventListener('click', viewAddRecipe);
@@ -28,6 +33,7 @@ clearButton.addEventListener('click', function(event) {
   clearRadio(radioAll);
   clearMeal();
 });
+viewFavRecipeButton.addEventListener('click', viewFavRecipe);
 
 // event handlers
 function viewAddRecipe() {
@@ -52,6 +58,14 @@ function clearRadio(radioAll) {
   }
 }
 
+function viewFavRecipe() {
+  if (centerBox.classList.contains('hidden')) {
+    show(centerBox);
+  } else {
+    hide(centerBox);
+  }
+}
+
 function letsCook() {
   if (radioSide.checked || radioMain.checked || radioDessert.checked || radioMeal.checked) {
     displayRandomMeal();
@@ -60,9 +74,11 @@ function letsCook() {
     show(displayText);
     show(displayFoodSingle);
     show(displayFoodEntire);
+    show(favRecipeButton);
   } else {
     letsCookButton.disabled = true;
   }
+  letsCookButton.disabled = false;
 }
 
 function clearMeal() {
@@ -71,6 +87,7 @@ function clearMeal() {
   hide(displayText);
   hide(displayFoodSingle);
   hide(displayFoodEntire);
+  hide(favRecipeButton);
 }
 
 function displayRandomMeal() {
