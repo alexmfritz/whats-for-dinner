@@ -19,14 +19,15 @@
         </section>
         <section class="flex-child" id="flex-child-right">
           <img class="cook-pot" src="./assets/cookpot.svg" alt="cooking pot"/>
-          <p class="display-text hidden">Your should make:</p>
-          <p class="display-food hidden"></p>
+          <p class="display-text hidden">You should make:</p>
+          <p class="display-food-single hidden"></p>
+          <p class="display-food-entire hidden"></p>
           <button class="clear-button hidden">CLEAR</button>
         </section>
     </main>
     <section>
       <footer class="add-recipe hidden">
-        <label class="new-recipe-text" for="recipe-type">Recipe Type:</label>
+        <label class="new-recipe-text" for="recipe-type" id="recipe-name-left">Recipe Type:</label>
         <input class="new-recipe-input" type="text" id="recipe-type" />
         <label class="new-recipe-text" type="text" id="recipe-name-right">Recipe Name:</label>
         <input class="new-recipe-input" id="recipe-name" />
