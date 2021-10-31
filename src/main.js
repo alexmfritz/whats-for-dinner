@@ -22,8 +22,10 @@ var newRecipeView = document.querySelector('.add-recipe');
 var newRecipeType = document.querySelector('#recipe-type');
 var newRecipeName = document.querySelector('#recipe-name');
 // favorite recipe
+var main = document.querySelector('main');
 var centerBox = document.querySelector('.flex-child-center');
 var favRecipeText = document.querySelector('.fav-recipe-text');
+var homeButton = document.querySelector('.home-button');
 
 // event listeners
 showFooterButton.addEventListener('click', viewAddRecipe);
@@ -36,6 +38,7 @@ clearButton.addEventListener('click', function(event) {
 favRecipeButton.addEventListener('click', saveFavRecipe);
 viewFavRecipeButton.addEventListener('click', viewFavRecipes);
 centerBox.addEventListener('dblclick', deleteFavRecipe);
+homeButton.addEventListener('click', returnHome);
 
 // event handlers
 function viewAddRecipe() {
@@ -61,10 +64,12 @@ function clearRadio(radioAll) {
 }
 
 function viewFavRecipes() {
+  hide(main);
   if (centerBox.classList.contains('hidden')) {
     show(centerBox);
   } else {
     hide(centerBox);
+    show(main);
   }
   displayFavRecipes();
 }
@@ -73,7 +78,9 @@ function displayFavRecipes() {
   favRecipeText.innerHTML = ``;
   for(var i = 0; i < favorites.length; i++) {
     favRecipeText.innerHTML += `
-      <p class="fav-recipe-text" id="${favorites[i]}">${favorites[i]}</p>`
+    <section>
+      <p class="fav-recipe-text" id="${favorites[i]}">${favorites[i]}</p>
+    </section>`
   }
 }
 
@@ -84,6 +91,11 @@ function deleteFavRecipe() {
     }
   }
   displayFavRecipes();
+}
+
+function returnHome() {
+  hide(centerBox);
+  show(main);
 }
 
 function saveFavRecipe() {
