@@ -87,11 +87,11 @@ main {
 
 #fav-recipe-title {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   text-align: center;
-  margin-bottom: 25%;
-  margin-left: 17%;
+  margin-bottom: 30%;
+  margin-left: 18%;
   position: fixed;
 }
 
@@ -99,17 +99,27 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 400px;
+  max-height: 400px;
   max-width: 600px;
   align-content: center;
   text-align: center;
-  align-items: center;
-  font-size: 18px;
+  font-size: 14px;
   margin-top: 0;
   margin-bottom: 0;
   margin-left: 7.5%;
   font-weight: bold;
   padding: 10px;
+}
+
+.delete-saved-button {
+  height: 20px;
+  width: 60px;
+  margin: 5px;
+  color: white;
+  background-color: #95a5a6;
+  border-radius: 5px;
+  border: none;
+  margin-left: 43%;
 }
 
 .home-button {

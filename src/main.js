@@ -37,7 +37,7 @@ clearButton.addEventListener('click', function(event) {
 });
 favRecipeButton.addEventListener('click', saveFavRecipe);
 viewFavRecipeButton.addEventListener('click', viewFavRecipes);
-centerBox.addEventListener('dblclick', deleteFavRecipe);
+centerBox.addEventListener('click', deleteFavRecipe);
 homeButton.addEventListener('click', returnHome);
 
 // event handlers
@@ -79,7 +79,7 @@ function displayFavRecipes() {
   for(var i = 0; i < favorites.length; i++) {
     favRecipeText.innerHTML += `
     <section>
-      <p class="fav-recipe-text" id="${favorites[i]}">${favorites[i]}</p>
+      <p class="fav-recipe-text">${favorites[i]}<button class="delete-saved-button" id="${favorites[i]}">DELETE</button></p>
     </section>`
   }
 }
