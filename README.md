@@ -32,7 +32,11 @@ Because this project involved writing the entire site from scratch, my goals wer
 
 ## Features
 
+[](!https://media.giphy.com/media/azWEAKCQoHyuMCmIIJ/giphy.gif)
+
 Upon page load the user will be able to select from 4 options of dish type radio inputs within the left box, click the "Let's Cook" button, and see their randomly generated output in the right box. If the user attempts to click the button without any radio input selected, the button will be disabled until they do. Once their selection is visible on the right box, they will have the option of generating something again from the left box, favoriting the current output, or clearing it to reveal the original contents of the right box.
+
+
 
 If the user is feeling creative, they may select the "Add A Recipe" button in the top right corner of the page to reveal a hidden footer with input fields. The left input field will take three dish types: Side, Main Dish, or Dessert (*this is uppercase sensitive*). The right input field will take anything the user types and add it to the options of that respective dish type (*not uppercase sensitive*). If they choose to begin cycling through recipe ideas, they will eventually see their recommendations. When the user is done adding their own recommendations, they may hide the "Add A Recipe" section by pressing the same button that revealed it.
 
