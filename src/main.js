@@ -46,22 +46,8 @@ function viewAddRecipe() {
     show(newRecipeView);
   } else {
     hide(newRecipeView);
-  }
-}
-
-function show(element) {
-  element.classList.remove('hidden');
-}
-
-function hide(element) {
-  element.classList.add('hidden');
-}
-
-function clearRadio(radioAll) {
-  for(var i = 0; i < radioAll.length; i++) {
-    radioAll[i].checked = false;
-  }
-}
+  };
+};
 
 function viewFavRecipes() {
   hide(main);
@@ -70,9 +56,9 @@ function viewFavRecipes() {
   } else {
     hide(centerBox);
     show(main);
-  }
+  };
   displayFavRecipes();
-}
+};
 
 function displayFavRecipes() {
   favRecipeText.innerHTML = ``;
@@ -81,28 +67,28 @@ function displayFavRecipes() {
     <section>
       <p class="fav-recipe-text">${favorites[i]}<button class="delete-saved-button" id="${favorites[i]}">DELETE</button></p>
     </section>`
-  }
-}
+  };
+};
 
 function deleteFavRecipe() {
   for(var i = 0; i < favorites.length; i++) {
     if (event.target.id === `${favorites[i]}`) {
       favorites.splice(i, 1);
-    }
-  }
+    };
+  };
   displayFavRecipes();
-}
+};
 
 function returnHome() {
   hide(centerBox);
   show(main);
-}
+};
 
 function saveFavRecipe() {
   if (!favorites.includes(displayFood.innerText)) {
     favorites.push(displayFood.innerText);
-  }
-}
+  };
+};
 
 function letsCook() {
   if (radioSide.checked || radioMain.checked || radioDessert.checked || radioMeal.checked) {
@@ -114,9 +100,9 @@ function letsCook() {
     show(favRecipeButton);
   } else {
     letsCookButton.disabled = true;
-  }
+  };
   letsCookButton.disabled = false;
-}
+};
 
 function clearMeal() {
   show(cookPot);
@@ -124,7 +110,7 @@ function clearMeal() {
   hide(displayText);
   hide(displayFood);
   hide(favRecipeButton);
-}
+};
 
 function displayRandomMeal() {
   if (radioSide.checked) {
@@ -135,30 +121,46 @@ function displayRandomMeal() {
     displaySingleMeal(desserts[getRandomIndex(desserts)]);
   } else if (radioMeal.checked) {
     displayEntireMeal(mains[getRandomIndex(mains)], sides[getRandomIndex(sides)], desserts[getRandomIndex(desserts)])
-  }
-}
-
-function displaySingleMeal(singleMeal) {
-  displayFood.innerText = `${singleMeal}!`;
-}
-
-function displayEntireMeal(mains, sides, desserts) {
-  displayFood.innerText = `${mains} for the main course, ${sides} for a side, and ${desserts} for the dessert!`;
-}
+  };
+};
 
 function addRecipe() {
-  if ((newRecipeType.value == 'side') && (!sides.includes(newRecipeName.value))) {
+  if ((newRecipeType.value === 'Side') && (!sides.includes(newRecipeName.value))) {
     sides.push(newRecipeName.value);
-  } else if ((newRecipeType.value == 'main dish') && (!mains.includes(newRecipeName.value))) {
+  } else if ((newRecipeType.value === 'Main Dish') && (!mains.includes(newRecipeName.value))) {
     mains.push(newRecipeName.value);
-  } else if ((newRecipeType.value == 'dessert') && (!desserts.includes(newRecipeName.value))) {
+  } else if ((newRecipeType.value === 'Dessert') && (!desserts.includes(newRecipeName.value))) {
     desserts.push(newRecipeName.value);
   } else if ((sides.includes(newRecipeName.value)) || (mains.includes(newRecipeName.value)) || (desserts.includes(newRecipeName.value))) {
     alert('You cannot enter the same recipe twice!');
   } else {
-    alert('Please enter all the necessary information!');
-  }
-}
+    alert('Please use the correct case and include both values!');
+  };
+};
+
+// helper functions
+
+function clearRadio(radioAll) {
+  for(var i = 0; i < radioAll.length; i++) {
+    radioAll[i].checked = false;
+  };
+};
+
+function displaySingleMeal(singleMeal) {
+  displayFood.innerText = `${singleMeal}!`;
+};
+
+function displayEntireMeal(mains, sides, desserts) {
+  displayFood.innerText = `${mains} for the main course, ${sides} for a side, and ${desserts} for the dessert!`;
+};
+
+function show(element) {
+  element.classList.remove('hidden');
+};
+
+function hide(element) {
+  element.classList.add('hidden');
+};
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
