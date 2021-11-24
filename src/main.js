@@ -37,40 +37,42 @@ clearButton.addEventListener('click', function(event) {
 });
 favRecipeButton.addEventListener('click', saveFavRecipe);
 viewFavRecipeButton.addEventListener('click', viewFavRecipes);
-centerBox.addEventListener('click', deleteFavRecipe);
+centerBox.addEventListener('click', function(event) {
+  deleteFavRecipe(event); 
+});
 homeButton.addEventListener('click', returnHome);
 
 // event handlers
 function viewAddRecipe() {
   if (newRecipeView.classList.contains('hidden')) {
-    removeClass([newRecipeView]);
-  } else {
     addClass([newRecipeView]);
+  } else {
+    removeClass([newRecipeView]);
   };
 };
 
 function viewFavRecipes() {
-  addClass([main]);
+  removeClass([main]);
   if (centerBox.classList.contains('hidden')) {
-    removeClass([centerBox]);
-  } else {
     addClass([centerBox]);
-    removeClass([main]);
+  } else {
+    removeClass([centerBox]);
+    addClass([main]);
   };
   displayFavRecipes();
 };
 
-function displayFavRecipes() {
+displayFavRecipes = () => {
   favRecipeText.innerHTML = ``;
-  for(var i = 0; i < favorites.length; i++) {
+  favorites.forEach((item) => {
     favRecipeText.innerHTML += `
     <section>
-      <p class="fav-recipe-text">${favorites[i]}<button class="delete-saved-button" id="${favorites[i]}">DELETE</button></p>
+      <p class="fav-recipe-text">${item}<button class="delete-saved-button" id="${item}">DELETE</button></p>
     </section>`
-  };
+  });
 };
 
-function deleteFavRecipe() {
+function deleteFavRecipe(event) {
   for(var i = 0; i < favorites.length; i++) {
     if (event.target.id === `${favorites[i]}`) {
       favorites.splice(i, 1);
@@ -80,8 +82,8 @@ function deleteFavRecipe() {
 };
 
 function returnHome() {
-  addClass([centerBox]);
-  removeClass([main]);
+  removeClass([centerBox]);
+  addClass([main]);
 };
 
 function saveFavRecipe() {
@@ -93,11 +95,8 @@ function saveFavRecipe() {
 function letsCook() {
   if (radioSide.checked || radioMain.checked || radioDessert.checked || radioMeal.checked) {
     displayRandomMeal();
-    hide(cookPot);
-    show(clearButton);
-    show(displayText);
-    show(displayFood);
-    show(favRecipeButton);
+    removeClass([cookPot]);
+    addClass([clearButton, displayText, displayFood, favRecipeButton]);
   } else {
     letsCookButton.disabled = true;
   };
@@ -105,8 +104,8 @@ function letsCook() {
 };
 
 function clearMeal() {
-  removeClass([cookPot]);
-  addClass([clearButton], displayText, displayFood, favRecipeButton]);
+  addClass([cookPot]);
+  removeClass([clearButton, displayText, displayFood, favRecipeButton]);
 };
 
 function displayRandomMeal() {
@@ -151,25 +150,16 @@ displayEntireMeal = (mains, sides, desserts) => {
   displayFood.innerText = `${mains} for the main course, ${sides} for a side, and ${desserts} for the dessert!`;
 };
 
-<<<<<<< HEAD
-show = (element) => {
-  element.classList.remove('hidden');
+removeClass = (elements) => {
+  elements.forEach((item) => {
+    item.classList.add('hidden');
+  });
 };
 
-hide = (element) => {
-  element.classList.add('hidden');
-=======
-function removeClass(elements) {
-  for (var i = 0; i < elements.length; i ++) {
-      elements[i].classList.remove('hidden');
-  };
-};
-
-function addClass(elements) {
-  for (var i = 0; i < elements.length; i++) {
-      elements[i].classList.add('hidden');
-  };
->>>>>>> 4ebb18061abb384611815eaec20f7eec363b2721
+addClass = (elements) => {
+  elements.forEach((item) => {
+    item.classList.remove('hidden');
+  });
 };
 
 getRandomIndex = (array) => {
