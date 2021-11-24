@@ -31,7 +31,7 @@ var homeButton = document.querySelector('.home-button');
 showFooterButton.addEventListener('click', viewAddRecipe);
 letsCookButton.addEventListener('click', letsCook);
 newRecipeButton.addEventListener('click', addRecipe);
-clearButton.addEventListener('click', function(event) {
+clearButton.addEventListener('click', function() {
   clearRadio(radioAll);
   clearMeal();
 });
