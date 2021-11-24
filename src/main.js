@@ -140,28 +140,28 @@ function addRecipe() {
 
 // helper functions
 
-function clearRadio(radioAll) {
-  for(var i = 0; i < radioAll.length; i++) {
-    radioAll[i].checked = false;
-  };
+clearRadio = (radioAll) => {
+  radioAll.forEach((item) => {
+    item.checked = false;
+  });
 };
 
-function displaySingleMeal(singleMeal) {
+displaySingleMeal = (singleMeal) => {
   displayFood.innerText = `${singleMeal}!`;
 };
 
-function displayEntireMeal(mains, sides, desserts) {
+displayEntireMeal = (mains, sides, desserts) => {
   displayFood.innerText = `${mains} for the main course, ${sides} for a side, and ${desserts} for the dessert!`;
 };
 
-function show(element) {
+show = (element) => {
   element.classList.remove('hidden');
 };
 
-function hide(element) {
+hide = (element) => {
   element.classList.add('hidden');
 };
 
-function getRandomIndex(array) {
+getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length);
 };
