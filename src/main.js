@@ -43,19 +43,19 @@ homeButton.addEventListener('click', returnHome);
 // event handlers
 function viewAddRecipe() {
   if (newRecipeView.classList.contains('hidden')) {
-    show(newRecipeView);
+    removeClass([newRecipeView]);
   } else {
-    hide(newRecipeView);
+    addClass([newRecipeView]);
   };
 };
 
 function viewFavRecipes() {
-  hide(main);
+  addClass([main]);
   if (centerBox.classList.contains('hidden')) {
-    show(centerBox);
+    removeClass([centerBox]);
   } else {
-    hide(centerBox);
-    show(main);
+    addClass([centerBox]);
+    removeClass([main]);
   };
   displayFavRecipes();
 };
@@ -80,8 +80,8 @@ function deleteFavRecipe() {
 };
 
 function returnHome() {
-  hide(centerBox);
-  show(main);
+  addClass([centerBox]);
+  removeClass([main]);
 };
 
 function saveFavRecipe() {
@@ -105,11 +105,8 @@ function letsCook() {
 };
 
 function clearMeal() {
-  show(cookPot);
-  hide(clearButton);
-  hide(displayText);
-  hide(displayFood);
-  hide(favRecipeButton);
+  removeClass([cookPot]);
+  addClass([clearButton], displayText, displayFood, favRecipeButton]);
 };
 
 function displayRandomMeal() {
@@ -154,12 +151,25 @@ displayEntireMeal = (mains, sides, desserts) => {
   displayFood.innerText = `${mains} for the main course, ${sides} for a side, and ${desserts} for the dessert!`;
 };
 
+<<<<<<< HEAD
 show = (element) => {
   element.classList.remove('hidden');
 };
 
 hide = (element) => {
   element.classList.add('hidden');
+=======
+function removeClass(elements) {
+  for (var i = 0; i < elements.length; i ++) {
+      elements[i].classList.remove('hidden');
+  };
+};
+
+function addClass(elements) {
+  for (var i = 0; i < elements.length; i++) {
+      elements[i].classList.add('hidden');
+  };
+>>>>>>> 4ebb18061abb384611815eaec20f7eec363b2721
 };
 
 getRandomIndex = (array) => {
