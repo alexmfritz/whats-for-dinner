@@ -1,31 +1,31 @@
 // buttons
-var showFooterButton = document.querySelector('#add-recipe-button');
-var letsCookButton = document.querySelector('.lets-cook-button');
-var clearButton = document.querySelector('.clear-button');
-var newRecipeButton = document.querySelector('.add-new-button');
-var favRecipeButton = document.querySelector('.fav-recipe-button');
-var viewFavRecipeButton = document.querySelector('#view-fav-recipe-button');
+var showFooterButton = document.getElementById('addRecipeButton');
+var letsCookButton = document.getElementById('letsCookButton');
+var clearButton = document.getElementById('clearButton');
+var newRecipeButton = document.getElementById('addNewButton');
+var favRecipeButton = document.getElementById('favRecipeButton');
+var viewFavRecipeButton = document.getElementById('viewFavRecipeButton');
 // radio input
-var leftBox = document.querySelector('#flex-child-left');
-var radioSide = document.querySelector('#side');
-var radioMain = document.querySelector('#main');
-var radioDessert = document.querySelector('#dessert');
-var radioMeal = document.querySelector('#entire-meal');
+var leftBox = document.getElementById('flexChildLeft');
+var radioSide = document.getElementById('side');
+var radioMain = document.getElementById('main');
+var radioDessert = document.getElementById('dessert');
+var radioMeal = document.getElementById('entireMeal');
 var radioAll = document.getElementsByName('type');
 // right box
-var rightBox = document.querySelector('#flex-child-right');
-var cookPot = document.querySelector('.cook-pot');
-var displayText = document.querySelector('.display-text');
-var displayFood = document.querySelector('.display-food');
+var rightBox = document.getElementById('flexChildRight');
+var cookPot = document.getElementById('cookPot');
+var displayText = document.getElementById('displayText');
+var displayFood = document.getElementById('displayFood');
 // footer
-var newRecipeView = document.querySelector('.add-recipe');
-var newRecipeType = document.querySelector('#recipe-type');
-var newRecipeName = document.querySelector('#recipe-name');
+var newRecipeView = document.getElementById('addRecipeView');
+var newRecipeType = document.getElementById('recipeType');
+var newRecipeName = document.getElementById('recipeName');
 // favorite recipe
 var main = document.querySelector('main');
-var centerBox = document.querySelector('.flex-child-center');
-var favRecipeText = document.querySelector('.fav-recipe-text');
-var homeButton = document.querySelector('.home-button');
+var centerBox = document.getElementById('flexChildCenter');
+var favRecipeText = document.getElementById('favRecipeText');
+var homeButton = document.getElementById('homeButton');
 
 // event listeners
 showFooterButton.addEventListener('click', viewAddRecipe);
@@ -62,7 +62,7 @@ function viewFavRecipes() {
   displayFavRecipes();
 };
 
-displayFavRecipes = () => {
+function displayFavRecipes() {
   favRecipeText.innerHTML = ``;
   favorites.forEach((item) => {
     favRecipeText.innerHTML += `
@@ -134,34 +134,35 @@ function addRecipe() {
   };
 };
 
+
 // helper functions
 
-clearRadio = (radioAll) => {
+const clearRadio = (radioAll) => {
   radioAll.forEach((item) => {
     item.checked = false;
   });
 };
 
-displaySingleMeal = (singleMeal) => {
+const displaySingleMeal = (singleMeal) => {
   displayFood.innerText = `${singleMeal}!`;
 };
 
-displayEntireMeal = (mains, sides, desserts) => {
+const displayEntireMeal = (mains, sides, desserts) => {
   displayFood.innerText = `${mains} for the main course, ${sides} for a side, and ${desserts} for the dessert!`;
 };
 
-removeClass = (elements) => {
+const removeClass = (elements) => {
   elements.forEach((item) => {
     item.classList.add('hidden');
   });
 };
 
-addClass = (elements) => {
+const addClass = (elements) => {
   elements.forEach((item) => {
     item.classList.remove('hidden');
   });
 };
 
-getRandomIndex = (array) => {
+const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length);
 };
