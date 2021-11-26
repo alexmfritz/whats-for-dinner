@@ -27,23 +27,8 @@ var centerBox = document.getElementById('flexChildCenter');
 var favRecipeText = document.getElementById('favRecipeText');
 var homeButton = document.getElementById('homeButton');
 
-// event listeners
-showFooterButton.addEventListener('click', viewAddRecipe);
-letsCookButton.addEventListener('click', letsCook);
-newRecipeButton.addEventListener('click', addRecipe);
-clearButton.addEventListener('click', function() {
-  clearRadio(radioAll);
-  clearMeal();
-});
-favRecipeButton.addEventListener('click', saveFavRecipe);
-viewFavRecipeButton.addEventListener('click', viewFavRecipes);
-centerBox.addEventListener('click', function(event) {
-  deleteFavRecipe(event); 
-});
-homeButton.addEventListener('click', returnHome);
-
 // event handlers
-function viewAddRecipe() {
+const viewAddRecipe = () => {
   if (newRecipeView.classList.contains('hidden')) {
     addClass([newRecipeView]);
   } else {
@@ -51,7 +36,7 @@ function viewAddRecipe() {
   };
 };
 
-function viewFavRecipes() {
+const viewFavRecipes = () => {
   removeClass([mainView]);
   if (centerBox.classList.contains('hidden')) {
     addClass([centerBox]);
@@ -62,7 +47,7 @@ function viewFavRecipes() {
   displayFavRecipes();
 };
 
-function displayFavRecipes() {
+const displayFavRecipes = () => {
   favRecipeText.innerHTML = ``;
   favorites.forEach(item => {
     favRecipeText.innerHTML += `
@@ -72,7 +57,7 @@ function displayFavRecipes() {
   });
 };
 
-function deleteFavRecipe(event) {
+const  deleteFavRecipe = (event) => {
   for(var i = 0; i < favorites.length; i++) {
     if (event.target.id === `${favorites[i]}`) {
       favorites.splice(i, 1);
@@ -81,18 +66,19 @@ function deleteFavRecipe(event) {
   displayFavRecipes();
 };
 
-function returnHome() {
+
+const returnHome = () => {
   removeClass([centerBox]);
   addClass([mainView]);
 };
 
-function saveFavRecipe() {
+const saveFavRecipe = () => {
   if (!favorites.includes(displayFood.innerText)) {
     favorites.push(displayFood.innerText);
   };
 };
 
-function letsCook() {
+const letsCook = () => {
   if (radioSide.checked || radioMain.checked || radioDessert.checked || radioMeal.checked) {
     displayRandomMeal();
     removeClass([cookPot]);
@@ -103,12 +89,12 @@ function letsCook() {
   letsCookButton.disabled = false;
 };
 
-function clearMeal() {
+const clearMeal = () => {
   addClass([cookPot]);
   removeClass([clearButton, displayText, displayFood, favRecipeButton]);
 };
 
-function displayRandomMeal() {
+const displayRandomMeal = () => {
   if (radioSide.checked) {
     displaySingleMeal(sides[getRandomIndex(sides)])
   } else if (radioMain.checked) {
@@ -120,7 +106,7 @@ function displayRandomMeal() {
   };
 };
 
-function addRecipe() {
+const addRecipe = () => {
   if ((newRecipeType.value === 'Side') && (!sides.includes(newRecipeName.value))) {
     sides.push(newRecipeName.value);
   } else if ((newRecipeType.value === 'Main Dish') && (!mains.includes(newRecipeName.value))) {
@@ -133,7 +119,6 @@ function addRecipe() {
     alert('Please use the correct case and include both values!');
   };
 };
-
 
 // helper functions
 
@@ -166,3 +151,16 @@ const addClass = (elements) => {
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length);
 };
+
+// event listeners
+centerBox.addEventListener('click', (event) => {deleteFavRecipe(event)});
+showFooterButton.addEventListener('click', viewAddRecipe);
+letsCookButton.addEventListener('click', letsCook);
+newRecipeButton.addEventListener('click', addRecipe);
+favRecipeButton.addEventListener('click', saveFavRecipe);
+viewFavRecipeButton.addEventListener('click', viewFavRecipes);
+homeButton.addEventListener('click', returnHome);
+clearButton.addEventListener('click', function() {
+  clearRadio(radioAll);
+  clearMeal();
+});
