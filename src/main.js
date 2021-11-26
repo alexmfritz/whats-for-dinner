@@ -22,7 +22,7 @@ var newRecipeView = document.getElementById('addRecipeView');
 var newRecipeType = document.getElementById('recipeType');
 var newRecipeName = document.getElementById('recipeName');
 // favorite recipe
-var main = document.querySelector('main');
+var mainView = document.getElementById('mainView');
 var centerBox = document.getElementById('flexChildCenter');
 var favRecipeText = document.getElementById('favRecipeText');
 var homeButton = document.getElementById('homeButton');
@@ -52,22 +52,22 @@ function viewAddRecipe() {
 };
 
 function viewFavRecipes() {
-  removeClass([main]);
+  removeClass([mainView]);
   if (centerBox.classList.contains('hidden')) {
     addClass([centerBox]);
   } else {
     removeClass([centerBox]);
-    addClass([main]);
+    addClass([mainView]);
   };
   displayFavRecipes();
 };
 
 function displayFavRecipes() {
   favRecipeText.innerHTML = ``;
-  favorites.forEach((item) => {
+  favorites.forEach(item => {
     favRecipeText.innerHTML += `
-    <section>
-      <p class="fav-recipe-text">${item}<button class="delete-saved-button" id="${item}">DELETE</button></p>
+    <section class="flex column center">
+      <p class="max-width sml-text text-center" id="${item}">${item}</p>
     </section>`
   });
 };
@@ -83,7 +83,7 @@ function deleteFavRecipe(event) {
 
 function returnHome() {
   removeClass([centerBox]);
-  addClass([main]);
+  addClass([mainView]);
 };
 
 function saveFavRecipe() {

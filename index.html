@@ -5,40 +5,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   </head>
   <body>
-    <header id="header">
-      <h1 id="whats-for-dinner">What's for Dinner?</h1>
-      <button id="addRecipeButton">ADD A RECIPE</button>
-      <button id="viewFavRecipeButton">VIEW FAVS</button>
+    <header class="flex row between teal" id="header">
+      <h1 class="sml-left-marg" id="whats-for-dinner">What's for Dinner?</h1>
+      <div class="flex sml-right-marg">
+        <button class="big-btns btn-border sml-top-marg med-right-marg" id="addRecipeButton">ADD A RECIPE</button>
+        <button class="big-btns btn-border sml-top-marg" id="viewFavRecipeButton">VIEW FAVS</button>
+      </div>
     </header>
     <main>
-        <section class="flex-child-main" id="flexChildLeft">
-            <h1>What are you looking for?<span>&#42;</span></h1>
-            <label><input type="radio" name="type" id="side">Side</label>
-            <label><input type="radio" name="type" id="main">Main Dish</label>
-            <label><input type="radio" name="type" id="dessert">Dessert</label>
-            <label><input type="radio" name="type" id="entireMeal">Entire Meal</label>
-            <button id="letsCookButton">LET'S COOK!</button>
+      <div class="flex row around" id="mainView">
+        <section class="flex column boxes" id="flexChildLeft">
+            <div class="med-left-marg">
+            <h2 class="sml-top-btm-marg">What are you looking for?<span>&#42;</span></h2>
+            <div class="flex column around sml-top-btm-marg">
+              <label class="sml-top-btm-marg"><input type="radio" name="type" id="side">Side</label>
+              <label class="sml-top-btm-marg"><input type="radio" name="type" id="main">Main Dish</label>
+              <label class="sml-top-btm-marg"><input type="radio" name="type" id="dessert">Dessert</label>
+              <label class="sml-top-btm-marg"><input type="radio" name="type" id="entireMeal">Entire Meal</label>
+            </div>
+            <button class="cook-btn btn-border top-btm-marg teal" id="letsCookButton">LET'S COOK!</button>
+            </div>
         </section>
-        <section class="flex-child-main" id="flexChildRight">
-          <img class="cook-pot" id="cookPot" src="./assets/cookpot.svg" alt="cooking pot"/>
-          <p class="display-text hidden" id="displayText">You should make:</p>
-          <p class="display-food hidden" id="displayFood"></p>
-          <button class="hidden" id="favRecipeButton">FAV</button>
-          <button class="hidden" id="clearButton">CLEAR</button>
+        <section class="flex column center boxes" id="flexChildRight">
+          <img class="big-top-marg" id="cookPot" src="./assets/cookpot.svg" alt="cooking pot"/>
+          <p class="big-text hidden" id="displayText">You should make:</p>
+          <p class="big-top-btm-marg min-height max-width med-text text-center hidden" id="displayFood"></p>
+          <section class="flex row between big-top-btm-marg min-width">
+            <button class="sml-btns btn-border teal sml-left-marg hidden" id="favRecipeButton">FAV</button>
+            <button class="sml-btns btn-border teal sml-right-marg hidden" id="clearButton">CLEAR</button>
+          </section>
         </section>
+      </div>
+      <div class="flex column center">
+        <section class="flex column center between boxes hidden" id="flexChildCenter">
+          <h2 class="max-width big-max-height text-center" id="fav-recipe-title">Your Favorite Recipes:</h2>
+          <section id="favRecipeText"></section>
+          <button class="sml-btns btn-border sml-top-btm-marg teal" id="homeButton">HOME</button>
+        </section>
+      </div>
     </main>
-    <section class="flex-child-center hidden" id="flexChildCenter">
-      <h1 id="fav-recipe-title">Your Favorite Recipes:</h1>
-      <section class="fav-recipe-text" id="favRecipeText"></section>
-      <button id="homeButton">HOME</button>
-    </section>
     <section>
-      <footer class="hidden" id="addRecipeView">
-        <label class="new-recipe-text" id="recipe-name-left">Recipe Type:</label>
-        <input class="new-recipe-input" type="text" id="recipeType" />
-        <label class="new-recipe-text" id="recipe-name-right">Recipe Name:</label>
-        <input class="new-recipe-input" type="text" id="recipeName" />
-        <button class="add-new-button" id="addNewButton">ADD NEW</button>
+      <footer class="flex row center fixed big-max-height min-width teal hidden" id="addRecipeView">
+        <div class="sml-left-marg">
+          <label id="recipe-name-left">Recipe Type:</label>
+          <input type="text" id="recipeType" />
+        </div>
+        <div class="sml-left-marg">
+          <label id="recipe-name-right">Recipe Name:</label>
+          <input type="text" id="recipeName" />
+        </div>
+        <button class="sml-btns btn-border sml-left-marg" id="addNewButton">ADD NEW</button>
       </footer>
     </section>
   </body>
