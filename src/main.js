@@ -6,14 +6,12 @@ var newRecipeButton = document.getElementById('addNewButton');
 var favRecipeButton = document.getElementById('favRecipeButton');
 var viewFavRecipeButton = document.getElementById('viewFavRecipeButton');
 // radio input
-var leftBox = document.getElementById('flexChildLeft');
 var radioSide = document.getElementById('side');
 var radioMain = document.getElementById('main');
 var radioDessert = document.getElementById('dessert');
 var radioMeal = document.getElementById('entireMeal');
 var radioAll = document.getElementsByName('type');
 // right box
-var rightBox = document.getElementById('flexChildRight');
 var cookPot = document.getElementById('cookPot');
 var displayText = document.getElementById('displayText');
 var displayFood = document.getElementById('displayFood');
@@ -33,7 +31,7 @@ const viewAddRecipe = () => {
     addClass([newRecipeView]);
   } else {
     removeClass([newRecipeView]);
-  };
+  }
 }
 
 const viewFavRecipes = () => {
@@ -43,7 +41,7 @@ const viewFavRecipes = () => {
   } else {
     removeClass([centerBox]);
     addClass([mainView]);
-  };
+  }
   displayFavRecipes();
 }
 
@@ -74,7 +72,7 @@ const returnHome = () => {
 const saveFavRecipe = () => {
   if (!favorites.includes(displayFood.innerText)) {
     favorites.push(displayFood.innerText);
-  };
+  }
 }
 
 const letsCook = () => {
@@ -84,7 +82,7 @@ const letsCook = () => {
     addClass([clearButton, displayText, displayFood, favRecipeButton]);
   } else {
     letsCookButton.disabled = true;
-  };
+  }
   letsCookButton.disabled = false;
 }
 
@@ -94,15 +92,18 @@ const clearMeal = () => {
 }
 
 const displayRandomMeal = () => {
+  let sidesText = sides[getRandomIndex(sides)];
+  let mainsText = mains[getRandomIndex(mains)];
+  let dessertsText = desserts[getRandomIndex(desserts)];
   if (radioSide.checked) {
-    displaySingleMeal(sides[getRandomIndex(sides)])
+    displaySingleMeal(sidesText)
   } else if (radioMain.checked) {
-    displaySingleMeal(mains[getRandomIndex(mains)]);
+    displaySingleMeal(mainsText);
   } else if (radioDessert.checked) {
-    displaySingleMeal(desserts[getRandomIndex(desserts)]);
+    displaySingleMeal(dessertsText);
   } else if (radioMeal.checked) {
-    displayEntireMeal(mains[getRandomIndex(mains)], sides[getRandomIndex(sides)], desserts[getRandomIndex(desserts)])
-  };
+    displayEntireMeal(mainsText, sidesText, dessertsText)
+  }
 }
 
 const addRecipe = () => {
@@ -116,7 +117,7 @@ const addRecipe = () => {
     alert('You cannot enter the same recipe twice!');
   } else {
     alert('Please use the correct case and include both values!');
-  };
+  }
 }
 
 // helper functions
@@ -132,7 +133,9 @@ const displaySingleMeal = (singleMeal) => {
 }
 
 const displayEntireMeal = (mains, sides, desserts) => {
-  displayFood.innerText = `${mains} for the main course, ${sides} for a side, and ${desserts} for the dessert!`;
+  displayFood.innerText = 
+  `${mains} for the main course, ${sides} for a side, 
+  and ${desserts} for the dessert!`;
 }
 
 const removeClass = (elements) => {
