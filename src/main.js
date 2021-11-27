@@ -57,14 +57,23 @@ const displayFavRecipes = () => {
   });
 };
 
-const  deleteFavRecipe = (event) => {
-  for(var i = 0; i < favorites.length; i++) {
-    if (event.target.id === `${favorites[i]}`) {
-      favorites.splice(i, 1);
-    };
-  };
+// const deleteFavRecipe = (event) => {
+//   for(var i = 0; i < favorites.length; i++) {
+//     if (event.target.id === `${favorites[i]}`) {
+//       favorites.splice(i, 1);
+//     };
+//   };
+//   displayFavRecipes();
+// };
+
+const deleteFavRecipe = (event) => {
+  favorites.forEach(item => {
+    if (event.target.id === `${item.id}`) {
+      favorites.splice(favorites.indexOf(item), 1);
+    }
+  });
   displayFavRecipes();
-};
+}
 
 
 const returnHome = () => {
